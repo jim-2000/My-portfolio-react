@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 import Header from './Component/App/Header';
 import CardXoss from './Component/App/Card';
-
+import Footer from './Component/App/Footer'
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 const useStyles = makeStyles((theme)=> ({
@@ -26,6 +26,8 @@ function App() {
          <CssBaseline />
       <Header /> 
       <CardXoss />
+
+      <Footer />
         </div>
     </div>
   );

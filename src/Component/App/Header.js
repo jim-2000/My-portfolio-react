@@ -4,6 +4,8 @@ import AppBar from '@material-ui/core/AppBar'
 import ShortTextIcon from '@material-ui/icons/ShortText';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { Collapse, IconButton, Toolbar,  } from '@material-ui/core';
+import { Link as Scroll } from 'react-scroll'
+
 const useStyles = makeStyles((theme)=> ({
     root : {
         display: 'flex',
@@ -57,14 +59,15 @@ goDown: {
 const Header = ()=> {
     const classes = useStyles()
     const [checked, setchecked] = useState(false)
+
 useEffect (()=> {
     setchecked(true)
-})
+},[])
 
 
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root} id="header">
             <AppBar position="fixed" className={classes.appbar}>
              
              <Toolbar className={classes.appbarWrapper}>
@@ -75,16 +78,21 @@ useEffect (()=> {
             </Toolbar>   
             </AppBar>
            
-           <Collapse in={checked} 
-           {... (checked ? {timeout: 1000} : {})} 
-            collapsedHeight={50} >
+            <Collapse
+        in={checked}
+        {...(checked ? { timeout: 1000 } : {})}
+        collapsedHeight={50}
+      >
 
             <div className={classes.textWrapper}>
                 <h1 className={classes.title}>Welcome to <br /> My<span className={classes.colorTitle}>Island</span> </h1>
 
-                <IconButton>
-            <ArrowDownwardIcon  className={classes.goDown}/>
-                </IconButton>
+                <Scroll to="place-to-visit" smooth={true}>
+                    <IconButton>
+                        <ArrowDownwardIcon
+                        className={classes.goDown}/>
+                    </IconButton>
+                </Scroll>
             </div>
 
             </Collapse>

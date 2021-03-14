@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Collapse } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -32,10 +33,23 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ImageCard({place}) {
+export default function ImageCard({place, checked}) {
   const classes = useStyles();
+  // const [checked, setchecked] = useState(false)
+
+  // useEffect (()=> {
+  //     setchecked(true)
+  // },[])
 
   return (
+    <Collapse  in={checked}
+    {...(checked ? { timeout: 1000 } : {})}
+    collapsedHeight={50}
+    
+    
+    >
+
+  
     <Card className={classes.root}>
      
         <CardMedia
@@ -61,5 +75,6 @@ export default function ImageCard({place}) {
         </Button>
       </CardActions>
     </Card>
+    </Collapse>
   );
 }
